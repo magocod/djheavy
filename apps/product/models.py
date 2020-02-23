@@ -9,9 +9,7 @@ class Product(models.Model):
     ...
     """
 
-    ptype = models.ForeignKey(
-        ProductType, on_delete=models.PROTECT
-    )
+    ptype = models.ForeignKey(ProductType, on_delete=models.PROTECT)
     count = models.DecimalField(max_digits=10, decimal_places=2)
     updated = models.DateTimeField(default=timezone.now)
     timestamp = models.IntegerField(default=0)

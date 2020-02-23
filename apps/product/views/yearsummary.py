@@ -1,8 +1,8 @@
-import calendar
+# import calendar
 import json
-from typing import Dict, Tuple
+from typing import Any, Dict, Tuple
 
-from django.db.models import Count
+# from django.db.models import Count
 from django.http import JsonResponse
 
 
@@ -10,15 +10,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 from apps.product.models import Product
 
+
 @csrf_exempt
 def ProdYearSummaryView(request):
     """
     ...
     """
 
-    json_data = json.loads(request.body.decode("utf-8"))
-    # print(json_data)
-    
+    json_data: Dict[str, Any] = json.loads(request.body.decode("utf-8"))
+    print(json_data)
+
     # COUNT
 
     total_count: int = Product.objects.count()
@@ -54,29 +55,22 @@ def ProdYearSummaryView(request):
     year_summary = []
 
     months: Tuple[str] = (
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
     )
 
     for number, name in enumerate(months):
         # print(number + 1, name)
-        year_summary.append({
-            'number': number + 1,
-            'name': name,
-            'count': 0
-        })
+        year_summary.append({"number": number + 1, "name": name, "count": 0})
 
-    return JsonResponse({
-        'total': total_count,
-        'year_summary': year_summary
-    })
+    return JsonResponse({"total": total_count, "year_summary": year_summary})

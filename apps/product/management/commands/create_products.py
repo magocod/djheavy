@@ -15,13 +15,13 @@ class Command(BaseCommand):
     """
 
     def add_arguments(self, parser):
-    	parser.add_argument('quantity', type=int)
+        parser.add_argument("quantity", type=int)
 
     def handle(self, *args, **options):
         """
         ...
         """
-        quantity: int = options['quantity']
-        print(f'generating... :{quantity} (products)')
+        quantity: int = options["quantity"]
+        print(f"generating... :{quantity} (products)")
         ProductPoblateFactory.create_batch(size=quantity)
-        print('...completed')
+        print("...completed")

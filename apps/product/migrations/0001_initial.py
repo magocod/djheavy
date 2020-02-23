@@ -10,18 +10,32 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('product_type', '0001_initial'),
+        ("product_type", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('count', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('updated', models.DateTimeField(default=django.utils.timezone.now)),
-                ('timestamp', models.IntegerField(default=0)),
-                ('ptype', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='product_type.ProductType')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("count", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("updated", models.DateTimeField(default=django.utils.timezone.now)),
+                ("timestamp", models.IntegerField(default=0)),
+                (
+                    "ptype",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="product_type.ProductType",
+                    ),
+                ),
             ],
         ),
     ]

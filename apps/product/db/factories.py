@@ -41,7 +41,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
         if not create:
             return
 
-        print(self.id)
+        # print(self.id)
         # print(self.updated.timestamp())
         # print(self.updated.timestamp())
         # self.timestamp = self.updated.timestamp()

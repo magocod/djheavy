@@ -10,8 +10,9 @@
 
 * Celery --> https://docs.celeryproject.org/en/latest/index.html
 * factory_boy --> https://factoryboy.readthedocs.io/en/latest/
+* black --> https://black.readthedocs.io/en/stable/
 
-## Tests (--% coverage)
+## Tests (72% coverage)
 
 * Python unittest -> https://docs.python.org/3/library/unittest.html
 * Django tests -> https://docs.djangoproject.com/en/3.0/topics/testing/
@@ -22,6 +23,11 @@ Create a virtual python environment and install libraries with pip
 
 ```bash
 pip install -r requirements.txt
+```
+
+Create all virtual environments (using tox)
+```bash
+tox
 ```
 
 Migrate the database

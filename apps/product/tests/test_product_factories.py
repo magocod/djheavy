@@ -47,4 +47,3 @@ class FactoryProductTestCase(TestCase):
     #     ProductTypeFactory.create_batch(size=5)
     #     ProductFactory.create_batch(size=products_quantity)
     #     self.assertEqual(Product.objects.count(), products_quantity)
-

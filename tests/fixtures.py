@@ -29,7 +29,6 @@ class ProductTestCase(TestCase):
         """
         ProductTypeFactory.create_batch(size=quantity)
 
-
     def create_products(self, quantity: int):
         """
         ...

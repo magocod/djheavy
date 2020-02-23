@@ -22,6 +22,6 @@ from apps.mail.urls import urlpatterns as mailurls
 API_URLS = producturls + mailurls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("api/", include(API_URLS)),
 ]

@@ -4,5 +4,5 @@ from apps.mail.views import send_emails
 
 
 urlpatterns = [
-    path('send_emails/', send_emails),
+    path("send_emails/", send_emails),
 ]

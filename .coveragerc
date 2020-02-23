@@ -1,0 +1,8 @@
+[run]
+omit = 
+	*.tox*
+	*setup.py*
+	*manage.py*
+	*apps.py*
+	*asgi.py*
+	*wsgi.py*
