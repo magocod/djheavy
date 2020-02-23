@@ -4,5 +4,10 @@
     "ALLOWED_HOSTS": [
         "localhost",
         "localhost:8000"
+    ],
+    "CORS_ORIGIN_WHITELIST": [
+        "localhost",
+        "localhost:8000",
+        "localhost:8080"
     ]
 }
