@@ -38,7 +38,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
 
     @factory.post_generation
     def set_timestamp(self, create, extracted, **kwargs):
-        if not create:
+        if not create:  # pragma: no cover
             return
 
         # print(self.id)
