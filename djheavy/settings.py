@@ -106,6 +106,17 @@ CORS_ALLOW_HEADERS = (
     "Access-Control-Allow-Origin",
 )
 
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination." + "PageNumberPagination",
+    "PAGE_SIZE": 2,
+    "DEFAULT_METADATA_CLASS": "rest_framework.metadata.SimpleMetadata",
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+}
+
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -118,19 +129,19 @@ DATABASES = {
 }
 
 # CELERY CONFIG
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
-CELERY_ACCEPT_CONTENT = ["application/json"]
-CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_SERIALIZER = "json"
+CELERY_BROKER_URL = ENV["CELERY"]["CELERY_BROKER_URL"]
+CELERY_RESULT_BACKEND = ENV["CELERY"]["CELERY_RESULT_BACKEND"]
+CELERY_ACCEPT_CONTENT = ENV["CELERY"]["CELERY_ACCEPT_CONTENT"]
+CELERY_TASK_SERIALIZER = ENV["CELERY"]["CELERY_TASK_SERIALIZER"]
+CELERY_RESULT_SERIALIZER = ENV["CELERY"]["CELERY_RESULT_SERIALIZER"]
 
 # EMAIL
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "account@gmail.com"
-EMAIL_HOST_PASSWORD = "password"
+EMAIL_BACKEND = ENV["EMAIL"]["EMAIL_BACKEND"]
+EMAIL_HOST = ENV["EMAIL"]["EMAIL_HOST"]
+EMAIL_USE_TLS = ENV["EMAIL"]["EMAIL_USE_TLS"]
+EMAIL_PORT = ENV["EMAIL"]["EMAIL_PORT"]
+EMAIL_HOST_USER = ENV["EMAIL"]["EMAIL_HOST_USER"]
+EMAIL_HOST_PASSWORD = ENV["EMAIL"]["EMAIL_HOST_PASSWORD"]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
