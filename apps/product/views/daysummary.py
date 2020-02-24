@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 # from apps.product.models import Product
+from apps.product.tasks import generate_day_report
 
 
 @csrf_exempt
@@ -38,5 +39,8 @@ def ProdDaySummaryView(request):
             hour = f"0{number}:00:00"
 
         day_summary.append({"hour": hour, "count": 0})
+
+    # call task
+    generate_day_report.delay(json_data)
 
     return JsonResponse({"total": total_count, "day_summary": day_summary,})
