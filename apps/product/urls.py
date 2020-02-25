@@ -1,6 +1,6 @@
 from django.urls import path
 
-from apps.product.views import daysummary, monthsummary, yearsummary
+from apps.product.views.summary import daysummary, monthsummary, yearsummary
 from apps.product.views.report import reportlist
 
 urlpatterns = [

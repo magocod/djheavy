@@ -11,13 +11,6 @@ class ProductTypeCommandTestCase(TestCase):
     ...
     """
 
-    def setUp(self):
-        """
-        ...
-        """
-
-        pass
-
     def test_command_create_list_of_product_types(self):
         """
         ...

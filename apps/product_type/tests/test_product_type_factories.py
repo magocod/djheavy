@@ -11,13 +11,6 @@ class FactoryProductTypeTestCase(TestCase):
     ...
     """
 
-    def setUp(self):
-        """
-        ...
-        """
-
-        pass
-
     def test_factory_product_type(self):
         """
         ...
