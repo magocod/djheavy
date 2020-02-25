@@ -20,6 +20,6 @@ urlpatterns = [
     path(
         "report/list/<slug:slug>/",
         reportlist.ReportProductListView.as_view(),
-        name="report_prodyct_list"
-    )
+        name="report_prodyct_list",
+    ),
 ]

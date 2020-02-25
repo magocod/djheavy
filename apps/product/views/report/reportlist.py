@@ -24,9 +24,7 @@ class ReportProductListView(generics.ListAPIView):
         """
 
         # print(self.kwargs)
-        if self.kwargs['slug'] not in ['D', 'M', 'Y']:
+        if self.kwargs["slug"] not in ["D", "M", "Y"]:
             return []
 
-        return ReportProduct.objects.filter(
-            rformat=self.kwargs['slug']
-        ).order_by('id')
+        return ReportProduct.objects.filter(rformat=self.kwargs["slug"]).order_by("id")

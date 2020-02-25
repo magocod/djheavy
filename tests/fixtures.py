@@ -53,6 +53,4 @@ class InstanceAppTestCase(TestCase):
         ...
         """
 
-        ReportProduct.objects.create(
-            rformat="D",
-        )
+        ReportProduct.objects.create(rformat="D",)

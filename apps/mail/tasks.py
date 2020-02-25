@@ -20,7 +20,7 @@ def simulate_send_emails(text: str):
 
     Mail.objects.create(name=text)
 
-    if settings.DEBUG: # pragma: no cover
+    if settings.DEBUG:  # pragma: no cover
         pass
         # subject = 'Thank you for registering to our site'
         # message = ' it  means a world to us '

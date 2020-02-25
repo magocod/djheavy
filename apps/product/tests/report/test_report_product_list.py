@@ -1,7 +1,7 @@
 # local Django
 from tests.fixtures import InstanceAppTestCase
-from apps.product.models import Product
-from apps.product_type.models import ProductType
+# from apps.product.models import Product
+# from apps.product_type.models import ProductType
 
 
 class ReportProductListTestCase(InstanceAppTestCase):

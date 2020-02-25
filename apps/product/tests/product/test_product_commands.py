@@ -17,7 +17,7 @@ class ProductCommandTestCase(TestCase):
         ...
         """
 
-        ProductType.objects.create(name='test', price=100)
+        ProductType.objects.create(name="test", price=100)
         products_quantity: int = 5
         call_command("create_products", str(products_quantity))
         self.assertEqual(Product.objects.count(), products_quantity)
