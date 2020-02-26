@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # third-party
     "corsheaders",
     "rest_framework",
+    "django_celery_results",
     # local Django
     "apps.mail",
     "apps.product",
@@ -135,6 +136,16 @@ CELERY_RESULT_BACKEND = ENV["CELERY"]["CELERY_RESULT_BACKEND"]
 CELERY_ACCEPT_CONTENT = ENV["CELERY"]["CELERY_ACCEPT_CONTENT"]
 CELERY_TASK_SERIALIZER = ENV["CELERY"]["CELERY_TASK_SERIALIZER"]
 CELERY_RESULT_SERIALIZER = ENV["CELERY"]["CELERY_RESULT_SERIALIZER"]
+
+CELERY_CACHE_BACKEND = "default"
+
+# django setting.
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "django-cache",
+    }
+}
 
 # EMAIL
 EMAIL_BACKEND = ENV["EMAIL"]["EMAIL_BACKEND"]
