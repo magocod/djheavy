@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_celery_results",
     # local Django
+    "apps.dbcache",
     "apps.mail",
     "apps.product",
     "apps.product_type",
@@ -56,7 +57,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.cache.UpdateCacheMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "django.middleware.cache.FetchFromCacheMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -68,7 +71,7 @@ ROOT_URLCONF = "djheavy.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -139,13 +142,16 @@ CELERY_RESULT_SERIALIZER = ENV["CELERY"]["CELERY_RESULT_SERIALIZER"]
 
 CELERY_CACHE_BACKEND = "default"
 
-# django setting.
+# CACHE
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.db.DatabaseCache",
         "LOCATION": "django-cache",
     }
 }
+
+CACHE_MIDDLEWARE_ALIAS = "default"
+CACHE_MIDDLEWARE_SECONDS = 30
 
 # EMAIL
 EMAIL_BACKEND = ENV["EMAIL"]["EMAIL_BACKEND"]

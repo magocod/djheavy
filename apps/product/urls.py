@@ -1,7 +1,12 @@
+# Django
 from django.urls import path
 
+# from django.views.decorators.cache import cache_page
+
+# local Django
 from apps.product.views.summary import daysummary, monthsummary, yearsummary
 from apps.product.views.report import reportlist
+
 
 urlpatterns = [
     path(
@@ -20,6 +25,7 @@ urlpatterns = [
     path(
         "report/list/<slug:slug>/",
         reportlist.ReportProductListView.as_view(),
+        # cache_page(60 * 15)(reportlist.ReportProductListView.as_view()),
         name="report_prodyct_list",
     ),
 ]
