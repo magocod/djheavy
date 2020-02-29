@@ -1,2 +1,5 @@
 windows 10
 - celery -A djheavy worker --pool=solo -l info
+- celery -A djheavy status
+- celery -A djheavy inspect active
+- celery -A djheavy inspect status

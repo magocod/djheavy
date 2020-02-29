@@ -2,22 +2,25 @@
 ...
 """
 
-import json
+# standard library
+# import json
 
-from django.http import JsonResponse
+# third-party
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-from django.views.decorators.csrf import csrf_exempt
-
+# from django.http import JsonResponse
 from apps.mail.tasks import simulate_send_emails
 
 
-@csrf_exempt
+@api_view(['POST'])
 def send_emails(request):
     """
     ...
     """
 
     # print("call task")
-    json_data = json.loads(request.body.decode("utf-8"))
-    simulate_send_emails.delay(json_data["text"])
-    return JsonResponse({"email": "Emails sended using Celery"})
+    # json_data = json.loads(request.body.decode("utf-8"))
+    # print(json_data)
+    simulate_send_emails.delay(request.data["text"])
+    return Response("Emails sended using Celery")

@@ -20,5 +20,16 @@ app.config_from_object("django.conf:settings", namespace="CELERY")
 app.autodiscover_tasks()
 
 # app.conf.update(
-#   	BROKER_URL='redis://localhost:6379/0',
+#       BROKER_URL='redis://localhost:6379/0',
 # )
+
+
+@app.task(name="celery.ping")
+def ping():  # pragma: no cover
+    """
+    ignore connection validation with task server (celery)
+    """
+
+    # type: () -> str
+    """Simple task that just returns 'pong'."""
+    return "pong"
