@@ -1,8 +1,8 @@
 # local Django
-from tests.fixtures.appcase import InstanceAppTestCase
+from tests.fixtures.appcase import HttpClientTestCase
 
 
-class EmailRequestTestCase(InstanceAppTestCase):
+class EmailRequestTestCase(HttpClientTestCase):
     """
     ...
     """
@@ -15,3 +15,4 @@ class EmailRequestTestCase(InstanceAppTestCase):
         response = self.public_client.post("/api/send_emails/", {"text": "data"})
         # print(response)
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, "Emails sended using Celery")

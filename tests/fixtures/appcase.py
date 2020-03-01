@@ -14,7 +14,26 @@ from apps.product_type.db.factories import ProductTypeFactory
 from apps.product.models import ReportProduct
 
 
-class InstanceAppTestCase(TestCase):
+class HttpClientTestCase(TestCase):
+    """
+    ...
+    """
+
+    def setUp(self):
+        """
+        ...
+        """
+
+        self.set_http_clients()
+
+    def set_http_clients(self):
+        """
+        ...
+        """
+        self.public_client = APIClient()
+
+
+class InstanceAppTestCase(HttpClientTestCase):
     """
     ...
     """
@@ -28,12 +47,6 @@ class InstanceAppTestCase(TestCase):
         self.create_products_types(5)
         self.create_products(10)
         self.create_example_reports_products()
-
-    def set_http_clients(self):
-        """
-        ...
-        """
-        self.public_client = APIClient()
 
     def create_products_types(self, quantity: int):
         """

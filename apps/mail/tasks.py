@@ -3,8 +3,12 @@ from __future__ import absolute_import, unicode_literals
 from celery import shared_task
 
 # from time import sleep
+import binascii
+import os
 
 # Django
+from django.core.cache import cache
+
 # from django.core.mail import send_mail
 # from django.conf import settings
 
@@ -48,3 +52,32 @@ def simulate_send_emails(text: str):
         "sended_to": text,
     }
     return dict_task
+
+
+@shared_task
+def send_email_activation(username: str, email: str):
+    """
+    ...
+    """
+
+    token: str = binascii.hexlify(os.urandom(20)).decode()
+
+    # subject = 'Thank you for registering to our site'
+    # message = render_to_string('activate_account.html', {
+    #     'username': request.data["username"],
+    #     'domain': current_site.domain,
+    #     'token': token,
+    # })
+
+    # email_from = settings.EMAIL_HOST_USER
+    # recipient_list = [email]
+    # send_mail(
+    #     subject,
+    #     message,
+    #     email_from,
+    #     recipient_list
+    # )
+
+    cache.set(token, f"{username}_{email}_{token}", 60)
+
+    return token
