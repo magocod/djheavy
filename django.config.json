@@ -1,6 +1,6 @@
 {
     "SECRET_KEY": "4f4dgh)&^22e!yj_!8riednouq6q6)_c=+fp77zy=$&&y%0(ta",
-    "DEBUG": false,
+    "DEBUG": true,
     "ALLOWED_HOSTS": [
         "localhost",
         "localhost:8000"
