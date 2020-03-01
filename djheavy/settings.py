@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import json
 import os
 
+# heroku
+import django_heroku
+import dj_database_url
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -137,8 +141,14 @@ DATABASES = {
 }
 
 # CELERY CONFIG
-CELERY_BROKER_URL = ENV["CELERY"]["CELERY_BROKER_URL"]
-CELERY_RESULT_BACKEND = ENV["CELERY"]["CELERY_RESULT_BACKEND"]
+
+if DEBUG:  # pragma: no cover
+    CELERY_BROKER_URL = ENV["CELERY"]["CELERY_BROKER_URL"]
+    CELERY_RESULT_BACKEND = ENV["CELERY"]["CELERY_RESULT_BACKEND"]
+else:  # pragma: no cover
+    CELERY_BROKER_URL = os.environ.get('REDIS_URL')
+    CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL')
+
 CELERY_ACCEPT_CONTENT = ENV["CELERY"]["CELERY_ACCEPT_CONTENT"]
 CELERY_TASK_SERIALIZER = ENV["CELERY"]["CELERY_TASK_SERIALIZER"]
 CELERY_RESULT_SERIALIZER = ENV["CELERY"]["CELERY_RESULT_SERIALIZER"]
@@ -199,3 +209,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+IS_CI = os.environ.get("IS_CI", False)
+if not IS_CI:
+    django_heroku.settings(locals())
+    if not DEBUG:  # pragma: no cover
+        DATABASES["default"] = dj_database_url.config(
+            conn_max_age=600, ssl_require=True
+        )

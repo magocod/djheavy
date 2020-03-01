@@ -2,21 +2,21 @@ from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
 
-# opciones de django para la aplicación de celery.
+# Django options for celery application.
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djheavy.settings")
 
-# Crear la aplicación de Celery
+# Create the Celery application
 app = Celery("tasks")
 
-# Especificamos que las variables de configuración de Celery se encuentran
-# en el fichero `settings.py` de Django.
-# El parámetro namespace es para decir que las variables de configuración de
-# Celery en el fichero settings empiezan por el prefijo *CELERY_*
+# We specify that Celery configuration variables are found
+# in the `settings.py` file of Django.
+# The namespace parameter is to say that the configuration variables of
+# The celery in the configuration file begins with the prefix * CELERY_ *
 app.config_from_object("django.conf:settings", namespace="CELERY")
 
-# Este método auto-registra las tareas para el broker.
-# Busca tareas dentro de todos los archivos `tasks.py` que haya en las apps
-# y las envía a Redis automáticamente.
+# This method automatically records the tasks for the broker.
+# Search for tasks within all `task.py` files in applications
+# and send them to Redis automatically.
 app.autodiscover_tasks()
 
 # app.conf.update(

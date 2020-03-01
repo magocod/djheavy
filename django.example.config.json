@@ -6,9 +6,9 @@
         "localhost:8000"
     ],
     "CORS_ORIGIN_WHITELIST": [
-        "localhost",
-        "localhost:8000",
-        "localhost:8080"
+        "http://localhost",
+        "http://localhost:8000",
+        "http://localhost:8080"
     ],
     "CELERY": {
         "CELERY_BROKER_URL": "redis://localhost:6379",
