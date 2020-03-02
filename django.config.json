@@ -1,6 +1,6 @@
 {
     "SECRET_KEY": "4f4dgh)&^22e!yj_!8riednouq6q6)_c=+fp77zy=$&&y%0(ta",
-    "DEBUG": true,
+    "DEBUG": false,
     "ALLOWED_HOSTS": [
         "localhost",
         "localhost:8000"
@@ -18,11 +18,12 @@
         "CELERY_RESULT_SERIALIZER": "json"
     },
     "EMAIL": {
+        "ACTIVE_EMAIL": false,
         "EMAIL_BACKEND": "django.core.mail.backends.smtp.EmailBackend",
         "EMAIL_HOST": "smtp.gmail.com",
         "EMAIL_USE_TLS": true,
         "EMAIL_PORT": 587,
-        "EMAIL_HOST_USER": "androvirtual12@gmail.com",
-        "EMAIL_HOST_PASSWORD": "19066903m"
+        "EMAIL_HOST_USER": "account@gmail.com",
+        "EMAIL_HOST_PASSWORD": "password"
     }
 }

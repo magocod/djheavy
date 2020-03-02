@@ -9,8 +9,9 @@ import os
 # Django
 from django.core.cache import cache
 
-# from django.core.mail import send_mail
-# from django.conf import settings
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
 
 from apps.mail.models import Mail
 
@@ -37,16 +38,12 @@ def simulate_send_emails(text: str):
     Mail.objects.create(name=text)
     # print("task db", Mail.objects.count())
 
-    # subject = 'Thank you for registering to our site'
-    # message = ' it  means a world to us '
-    # email_from = settings.EMAIL_HOST_USER
-    # recipient_list = ['receiver@gmail.com']
-    # send_mail(
-    #     subject,
-    #     message,
-    #     email_from,
-    #     recipient_list
-    # )
+    if settings.ACTIVE_EMAIL:  # pragma: no cover
+        subject = "Thank you for registering to our site"
+        message = " it  means a world to us "
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [text]
+        send_mail(subject, message, email_from, recipient_list)
 
     dict_task = {
         "sended_to": text,
@@ -55,28 +52,23 @@ def simulate_send_emails(text: str):
 
 
 @shared_task
-def send_email_activation(username: str, email: str):
+def send_email_activation(username: str, email: str, domain: str):
     """
     ...
     """
 
     token: str = binascii.hexlify(os.urandom(20)).decode()
 
-    # subject = 'Thank you for registering to our site'
-    # message = render_to_string('activate_account.html', {
-    #     'username': request.data["username"],
-    #     'domain': current_site.domain,
-    #     'token': token,
-    # })
+    if settings.ACTIVE_EMAIL:  # pragma: no cover
+        subject = "Thank you for registering to our site"
+        message = render_to_string(
+            "activate_account.html",
+            {"username": username, "domain": domain, "token": token,},
+        )
 
-    # email_from = settings.EMAIL_HOST_USER
-    # recipient_list = [email]
-    # send_mail(
-    #     subject,
-    #     message,
-    #     email_from,
-    #     recipient_list
-    # )
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+        send_mail(subject, message, email_from, recipient_list)
 
     cache.set(token, f"{username}_{email}_{token}", 60)
 

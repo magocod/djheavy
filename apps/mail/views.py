@@ -18,8 +18,7 @@ from django.conf import settings
 from django.core.cache import cache
 
 # from django.core.mail import send_mail
-# from django.contrib.sites.shortcuts import get_current_site
-# from django.template.loader import render_to_string
+from django.contrib.sites.shortcuts import get_current_site
 
 # from django.http import JsonResponse
 
@@ -51,8 +50,9 @@ def sign_up_form(request):
     # user logic
     # ...
     if not settings.DEBUG:  # pragma: no cover
+        current_site = get_current_site(request)
         tasks.send_email_activation.delay(
-            request.data["username"], request.data["email"]
+            request.data["username"], request.data["email"], current_site.domain
         )
 
     return Response(

@@ -25,7 +25,7 @@ class EmailTaskTestCase(CeleryWorkerTestCase):
         ...
         """
 
-        email_payload = "yson"
+        email_payload = "test@gmail.com"
         task = simulate_send_emails.delay(email_payload)
         task_result = task.get()
         # print("test db", Mail.objects.count())

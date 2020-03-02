@@ -12,7 +12,7 @@
 * factory_boy --> https://factoryboy.readthedocs.io/en/latest/
 * black --> https://black.readthedocs.io/en/stable/
 
-## Tests (90% coverage)
+## Tests (93% coverage)
 
 * Python unittest -> https://docs.python.org/3/library/unittest.html
 * Django tests -> https://docs.djangoproject.com/en/3.0/topics/testing/
