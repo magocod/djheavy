@@ -2,8 +2,14 @@ import json
 
 # from typing import Dict, Tuple
 
+# third-party
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 # from django.db.models import Count
-from django.http import JsonResponse
+from django.conf import settings
+# from django.http import JsonResponse
 
 
 from django.views.decorators.csrf import csrf_exempt
@@ -11,15 +17,15 @@ from django.views.decorators.csrf import csrf_exempt
 # from apps.product.models import Product
 from apps.product.tasks import generate_day_report
 
-
-@csrf_exempt
+ 
+@api_view(["POST"])
 def ProdDaySummaryView(request):
     """
     ...
     """
 
-    json_data = json.loads(request.body.decode("utf-8"))
-    print(json_data)
+    # json_data = json.loads(request.body.decode("utf-8"))
+    # print(json_data)
 
     # COUNT
 
@@ -40,7 +46,7 @@ def ProdDaySummaryView(request):
 
         day_summary.append({"hour": hour, "count": 0})
 
-    # call task
-    generate_day_report.delay(json_data)
+    if not settings.DEBUG:  # pragma: no cover
+        generate_day_report.delay(request.data)
 
-    return JsonResponse({"total": total_count, "day_summary": day_summary,})
+    return Response({"total": total_count, "day_summary": day_summary,}, status=status.HTTP_200_OK)

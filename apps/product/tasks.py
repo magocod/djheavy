@@ -12,7 +12,7 @@ from apps.product.models import ReportProduct
 
 
 @shared_task
-def generate_day_report(request: Dict[str, Any]):
+def generate_day_report(data: Dict[str, Any]):
     """
     ...
     """

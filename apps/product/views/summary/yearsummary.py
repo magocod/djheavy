@@ -2,23 +2,28 @@
 import json
 from typing import Any, Dict, Tuple
 
-# from django.db.models import Count
-from django.http import JsonResponse
+# third-party
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
+# from django.db.models import Count
+from django.conf import settings
+from django.http import JsonResponse
 
 from django.views.decorators.csrf import csrf_exempt
 
 from apps.product.models import Product
 
 
-@csrf_exempt
+@api_view(["POST"])
 def ProdYearSummaryView(request):
     """
     ...
     """
 
-    json_data: Dict[str, Any] = json.loads(request.body.decode("utf-8"))
-    print(json_data)
+    # json_data: Dict[str, Any] = json.loads(request.body.decode("utf-8"))
+    # print(json_data)
 
     # COUNT
 
@@ -73,4 +78,4 @@ def ProdYearSummaryView(request):
         # print(number + 1, name)
         year_summary.append({"number": number + 1, "name": name, "count": 0})
 
-    return JsonResponse({"total": total_count, "year_summary": year_summary})
+    return Response({"total": total_count, "year_summary": year_summary}, status=status.HTTP_200_OK)
