@@ -1,6 +1,6 @@
 # import calendar
-import json
-from typing import Any, Dict, Tuple
+# import json
+from typing import Tuple
 
 # third-party
 from rest_framework import status
@@ -8,10 +8,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 # from django.db.models import Count
-from django.conf import settings
-from django.http import JsonResponse
+# from django.conf import settings
+# from django.http import JsonResponse
 
-from django.views.decorators.csrf import csrf_exempt
+# from django.views.decorators.csrf import csrf_exempt
 
 from apps.product.models import Product
 
@@ -78,4 +78,6 @@ def ProdYearSummaryView(request):
         # print(number + 1, name)
         year_summary.append({"number": number + 1, "name": name, "count": 0})
 
-    return Response({"total": total_count, "year_summary": year_summary}, status=status.HTTP_200_OK)
+    return Response(
+        {"total": total_count, "year_summary": year_summary}, status=status.HTTP_200_OK
+    )
