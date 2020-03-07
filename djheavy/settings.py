@@ -139,11 +139,20 @@ DATABASES = {
         # "TEST": {
         #     "NAME": os.path.join(BASE_DIR, "test_db.sqlite3")
         # },
-    }
+    },
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "djheavy",
+    #     "USER": "root",
+    #     "PASSWORD": "",
+    #     "HOST": "127.0.0.1",
+    #     "PORT": 3306,
+    # },
 }
 
 # CELERY CONFIG
 
+CELERY_ACTIVATE = ENV["CELERY"]["ACTIVATE"]
 CELERY_BROKER_URL = ENV["CELERY"]["CELERY_BROKER_URL"]
 CELERY_RESULT_BACKEND = ENV["CELERY"]["CELERY_RESULT_BACKEND"]
 CELERY_ACCEPT_CONTENT = ENV["CELERY"]["CELERY_ACCEPT_CONTENT"]
