@@ -30,6 +30,5 @@ def ping():  # pragma: no cover
     ignore connection validation with task server (celery)
     """
 
-    # type: () -> str
     """Simple task that just returns 'pong'."""
     return "pong"

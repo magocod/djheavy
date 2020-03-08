@@ -2,6 +2,7 @@
 *.egg-info
 *.tox
 *.idea
+*.mypy_cache
 .coverage
 htmlcov
 db.sqlite3
