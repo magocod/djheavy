@@ -5,9 +5,10 @@
 # third-party
 from rest_framework import generics
 
+from apps.product.models import ReportProduct
+
 # local Django
 from apps.product.serializers import ReportProductSerializer
-from apps.product.models import ReportProduct
 
 
 class ReportProductListView(generics.ListAPIView):

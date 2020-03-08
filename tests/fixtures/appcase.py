@@ -2,16 +2,16 @@
 ...
 """
 
-# third-party
-from rest_framework.test import APIClient
-
 # Django
 from django.test import TestCase
 
+# third-party
+from rest_framework.test import APIClient
+
 # local Django
 from apps.product.db.factories import ProductPoblateFactory
-from apps.product_type.db.factories import ProductTypeFactory
 from apps.product.models import ReportProduct
+from apps.product_type.db.factories import ProductTypeFactory
 
 
 class HttpClientTestCase(TestCase):

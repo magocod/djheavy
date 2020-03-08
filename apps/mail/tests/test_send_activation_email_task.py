@@ -10,7 +10,6 @@ from django.core.cache import cache
 
 # local Django
 from apps.mail.tasks import send_email_activation
-
 from tests.fixtures.celerycase import CeleryWorkerTestCase
 
 

@@ -11,7 +11,6 @@ from django.db.utils import IntegrityError
 # local Django
 from apps.mail.models import Mail
 from apps.mail.tasks import simulate_send_emails
-
 from tests.fixtures.celerycase import CeleryWorkerTestCase
 
 

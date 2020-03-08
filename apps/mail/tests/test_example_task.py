@@ -10,7 +10,6 @@ from celery import states
 
 # local Django
 from apps.mail.tasks import example_add
-
 from tests.fixtures.celerycase import CeleryWorkerTestCase
 
 

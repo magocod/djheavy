@@ -7,9 +7,8 @@ import datetime
 
 # third-party
 import factory
-from factory import fuzzy
-
 import pytz
+from factory import fuzzy
 
 # local Django
 from apps.product_type.models import ProductType

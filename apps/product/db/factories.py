@@ -7,14 +7,13 @@ import datetime
 
 # third-party
 import factory
-from factory import fuzzy
-
 import pytz
+from factory import fuzzy
 
 # local Django
 from apps.product.models import Product
-from apps.product_type.models import ProductType
 from apps.product_type.db import factories as ptypefactories
+from apps.product_type.models import ProductType
 
 
 class ProductFactory(factory.django.DjangoModelFactory):

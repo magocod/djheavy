@@ -6,21 +6,21 @@
 
 # from typing import Dict, Tuple
 
+# from django.db.models import Count
+from django.conf import settings
+
 # third-party
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-# from django.db.models import Count
-from django.conf import settings
+# from apps.product.models import Product
+from apps.product.tasks import generate_day_report
 
 # from django.http import JsonResponse
 
 
 # from django.views.decorators.csrf import csrf_exempt
-
-# from apps.product.models import Product
-from apps.product.tasks import generate_day_report
 
 
 @api_view(["POST"])

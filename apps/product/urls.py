@@ -1,11 +1,12 @@
 # Django
 from django.urls import path
 
-# from django.views.decorators.cache import cache_page
+from apps.product.views.report import reportlist
 
 # local Django
 from apps.product.views.summary import daysummary, monthsummary, yearsummary
-from apps.product.views.report import reportlist
+
+# from django.views.decorators.cache import cache_page
 
 
 urlpatterns = [

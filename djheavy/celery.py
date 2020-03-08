@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
+
 import os
+
 from celery import Celery
 
 # Django options for celery application.

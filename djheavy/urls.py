@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 
-from apps.product.urls import urlpatterns as producturls
 from apps.mail.urls import urlpatterns as mailurls
+from apps.product.urls import urlpatterns as producturls
 
 API_URLS = producturls + mailurls
 

@@ -1,21 +1,19 @@
 from __future__ import absolute_import, unicode_literals
 
-from celery import shared_task
-
 # from time import sleep
 import binascii
 import os
 
+from celery import shared_task
+from django.conf import settings
+
 # Django
 from django.core.cache import cache
-
 from django.core.mail import send_mail
-from django.conf import settings
 from django.template.loader import render_to_string
 
-from apps.mail.models import Mail
-
 # local Django
+from apps.mail.models import Mail
 from apps.utils.basetaskcelery import VerifyTaskBase
 from djheavy.celery import app
 

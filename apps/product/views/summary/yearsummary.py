@@ -7,13 +7,13 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from apps.product.models import Product
+
 # from django.db.models import Count
 # from django.conf import settings
 # from django.http import JsonResponse
 
 # from django.views.decorators.csrf import csrf_exempt
-
-from apps.product.models import Product
 
 
 @api_view(["POST"])

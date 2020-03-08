@@ -10,10 +10,10 @@ import time
 # Django
 from django.core.cache import cache
 
-# from django.test import TestCase
-
 # local Django
 from tests.fixtures.appcase import HttpClientTestCase
+
+# from django.test import TestCase
 
 
 class ActivateAccountLinkTestCase(HttpClientTestCase):
