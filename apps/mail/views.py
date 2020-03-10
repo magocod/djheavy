@@ -35,7 +35,7 @@ def send_emails(request):
     # print("call task")
     # json_data = json.loads(request.body.decode("utf-8"))
     # print(json_data)
-    if not settings.CELERY_ACTIVATE:  # pragma: no cover
+    if settings.CELERY_ACTIVATE:  # pragma: no cover
         tasks.simulate_send_emails.delay(request.data["text"])
 
     return Response("Emails sended using Celery", status=status.HTTP_200_OK)
@@ -49,7 +49,7 @@ def sign_up_form(request):
 
     # user logic
     # ...
-    if not settings.CELERY_ACTIVATE:  # pragma: no cover
+    if settings.CELERY_ACTIVATE:  # pragma: no cover
         current_site = get_current_site(request)
         tasks.send_email_activation.delay(
             request.data["username"], request.data["email"], current_site.domain

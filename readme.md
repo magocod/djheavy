@@ -8,14 +8,16 @@
 
 ## Third Packages
 
-* Celery --> https://docs.celeryproject.org/en/latest/index.html
-* factory_boy --> https://factoryboy.readthedocs.io/en/latest/
-* black --> https://black.readthedocs.io/en/stable/
+* Celery -> https://docs.celeryproject.org/en/latest/index.html
+* factory_boy -> https://factoryboy.readthedocs.io/en/latest/
+* black -> https://black.readthedocs.io/en/stable/
+* isort -> https://timothycrosley.github.io/isort/
 
 ## Tests (93% coverage)
 
 * Python unittest -> https://docs.python.org/3/library/unittest.html
 * Django tests -> https://docs.djangoproject.com/en/3.0/topics/testing/
+* coverage -> https://coverage.readthedocs.io/en/coverage-5.0.3/
 
 ## instructions
 

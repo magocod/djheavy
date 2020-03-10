@@ -51,7 +51,7 @@ def ProdDaySummaryView(request):
 
         day_summary.append({"hour": hour, "count": 0})
 
-    if not settings.CELERY_ACTIVATE:  # pragma: no cover
+    if settings.CELERY_ACTIVATE:  # pragma: no cover
         generate_day_report.delay(request.data)
 
     return Response(

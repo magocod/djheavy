@@ -9,7 +9,7 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 
 # local Django
-from apps.product.db.factories import ProductPoblateFactory
+from apps.product.db.factories import ProductFactory
 from apps.product.models import ReportProduct
 from apps.product_type.db.factories import ProductTypeFactory
 
@@ -59,7 +59,7 @@ class InstanceAppTestCase(HttpClientTestCase):
         ...
         """
 
-        ProductPoblateFactory.create_batch(size=quantity)
+        ProductFactory.create_batch(size=quantity)
 
     def create_example_reports_products(self):
         """
