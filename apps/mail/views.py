@@ -15,6 +15,7 @@ from rest_framework.response import Response
 
 # Django
 from django.conf import settings
+
 # from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.cache import cache

@@ -14,6 +14,7 @@ import json
 import os
 
 import dj_database_url
+
 # heroku
 import django_heroku
 
@@ -56,7 +57,7 @@ INSTALLED_APPS = [
     # "django_celery_results", // deprecated
     # local Django
     "apps.dbcache",
-    "apps.mail"
+    "apps.mail",
 ]
 
 MIDDLEWARE = [
@@ -174,7 +175,7 @@ CACHE_MIDDLEWARE_SECONDS = 30
 # EMAIL
 ACTIVE_EMAIL = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = ENV["EMAIL"]["EMAIL_HOST"]
 EMAIL_USE_TLS = ENV["EMAIL"]["EMAIL_USE_TLS"]
 EMAIL_PORT = ENV["EMAIL"]["EMAIL_PORT"]

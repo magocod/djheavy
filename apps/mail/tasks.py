@@ -7,6 +7,7 @@ import os
 from celery import shared_task
 
 from django.conf import settings
+
 # Django
 from django.core.cache import cache
 from django.core.mail import send_mail
@@ -14,8 +15,9 @@ from django.template.loader import render_to_string
 
 # local Django
 from apps.mail.models import Mail
-from apps.utils.basetaskcelery import VerifyTaskBase
-from djheavy.celery import app
+
+# from apps.utils.basetaskcelery import VerifyTaskBase
+# from djheavy.celery import app
 
 
 # @app.task(base=VerifyTaskBase)

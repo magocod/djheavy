@@ -14,6 +14,7 @@ import json
 import os
 
 import dj_database_url
+
 # heroku
 import django_heroku
 
@@ -56,7 +57,7 @@ INSTALLED_APPS = [
     # "django_celery_results", // deprecated
     # local Django
     "apps.dbcache",
-    "apps.mail"
+    "apps.mail",
 ]
 
 MIDDLEWARE = [

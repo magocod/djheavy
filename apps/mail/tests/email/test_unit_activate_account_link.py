@@ -2,11 +2,12 @@
 ...
 """
 
-# standard library
-import pytest
 import binascii
 import os
 import time
+
+# standard library
+import pytest
 
 # Django
 from django.core.cache import cache

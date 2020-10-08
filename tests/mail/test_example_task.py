@@ -1,6 +1,5 @@
 import pytest
-
-from celery import shared_task, states
+from celery import states
 
 from apps.mail.tasks import example_add
 
