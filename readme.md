@@ -43,13 +43,12 @@ python manage.py migrate
 
 run tests (verify successful installation)
 ```bash
-python manage.py test
+pytest
 ```
 
 run tests (verify coverage)
 ```bash
-coverage run --source='.' manage.py test
-coverage report
+pytest --cov
 ```
 
 Run development server

@@ -29,7 +29,7 @@ with open(os.path.join(BASE_DIR, "django.config.json")) as json_file:
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # Heroku hosting
-ACTIVE_HEROKU = ENV["ACTIVE_HEROKU"]
+ACTIVE_HEROKU = False
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ENV["SECRET_KEY"]
@@ -151,7 +151,7 @@ DATABASES = {
 
 # CELERY CONFIG
 
-CELERY_ACTIVATE = ENV["CELERY"]["ACTIVATE"]
+CELERY_ACTIVATE = True
 CELERY_BROKER_URL = ENV["CELERY"]["CELERY_BROKER_URL"]
 CELERY_RESULT_BACKEND = ENV["CELERY"]["CELERY_RESULT_BACKEND"]
 CELERY_ACCEPT_CONTENT = ENV["CELERY"]["CELERY_ACCEPT_CONTENT"]
@@ -172,9 +172,9 @@ CACHE_MIDDLEWARE_ALIAS = "default"
 CACHE_MIDDLEWARE_SECONDS = 30
 
 # EMAIL
-ACTIVE_EMAIL = ENV["EMAIL"]["ACTIVE_EMAIL"]
+ACTIVE_EMAIL = True
 
-EMAIL_BACKEND = ENV["EMAIL"]["EMAIL_BACKEND"]
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = ENV["EMAIL"]["EMAIL_HOST"]
 EMAIL_USE_TLS = ENV["EMAIL"]["EMAIL_USE_TLS"]
 EMAIL_PORT = ENV["EMAIL"]["EMAIL_PORT"]
