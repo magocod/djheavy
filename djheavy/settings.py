@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     # third-party
     "corsheaders",
     "rest_framework",
-    "django_celery_results",
+    # "django_celery_results", // deprecated
     # local Django
     "apps.dbcache",
     "apps.mail"
