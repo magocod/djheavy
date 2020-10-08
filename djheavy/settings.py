@@ -14,7 +14,6 @@ import json
 import os
 
 import dj_database_url
-
 # heroku
 import django_heroku
 

@@ -5,8 +5,8 @@ import binascii
 import os
 
 from celery import shared_task
-from django.conf import settings
 
+from django.conf import settings
 # Django
 from django.core.cache import cache
 from django.core.mail import send_mail

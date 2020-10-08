@@ -8,17 +8,16 @@
 # import os
 
 
-# Django
-from django.conf import settings
-
-# from django.core.mail import send_mail
-from django.contrib.sites.shortcuts import get_current_site
-from django.core.cache import cache
-
 # third-party
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+# Django
+from django.conf import settings
+# from django.core.mail import send_mail
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.cache import cache
 
 # local Django
 from apps.mail import tasks
