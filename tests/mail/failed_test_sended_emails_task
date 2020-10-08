@@ -1,0 +1,51 @@
+"""
+...
+"""
+
+# third-party
+import pytest
+from celery import states
+
+# Django
+from django.db.utils import IntegrityError
+
+# local Django
+from apps.mail.models import Mail
+from apps.mail.tasks import simulate_send_emails
+
+pytestmark = [pytest.mark.django_db, pytest.mark.celery]
+
+
+def test_simulate_send_emails_task_success(celery_app, celery_worker):
+    """
+    ...
+    """
+
+    mailCount = Mail.objects.count()
+
+    email_payload = "test@gmail.com"
+    task = simulate_send_emails.delay(email_payload)
+    task_result = task.get()
+    # print("test db", Mail.objects.count())
+
+    assert task.status == states.SUCCESS
+    assert task_result["sended_to"] == email_payload
+    assert mailCount == Mail.objects.count()
+
+
+def test_simulate_send_emails_task_failed__error_parameters(celery_app, celery_worker):
+    """
+    ...
+    """
+
+    mailCount = Mail.objects.count()
+
+    try:
+        email_payload = None
+        task = simulate_send_emails.delay(email_payload)
+        task.get()
+    except Exception as e:
+        print(e)
+        assert task.status == states.FAILURE
+        assert isinstance(e, IntegrityError) == True
+        assert mailCount == Mail.objects.count()

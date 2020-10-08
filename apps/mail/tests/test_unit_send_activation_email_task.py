@@ -3,6 +3,7 @@
 """
 
 # third-party
+import pytest
 from celery import states
 
 # Django
@@ -11,6 +12,8 @@ from django.core.cache import cache
 # local Django
 from apps.mail.tasks import send_email_activation
 from tests.fixtures.celerycase import CeleryWorkerTestCase
+
+pytestmark = [pytest.mark.unittest]
 
 
 class ActivationEmailTaskTestCase(CeleryWorkerTestCase):

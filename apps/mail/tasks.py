@@ -18,7 +18,8 @@ from apps.utils.basetaskcelery import VerifyTaskBase
 from djheavy.celery import app
 
 
-@app.task(base=VerifyTaskBase)
+# @app.task(base=VerifyTaskBase)
+@shared_task
 def example_add(x: int, y: int):
     """
     ...
@@ -46,6 +47,7 @@ def simulate_send_emails(text: str):
     dict_task = {
         "sended_to": text,
     }
+
     return dict_task
 
 

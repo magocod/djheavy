@@ -3,6 +3,7 @@
 """
 
 # third-party
+import pytest
 from celery import states
 
 # Django
@@ -12,6 +13,8 @@ from django.db.utils import IntegrityError
 from apps.mail.models import Mail
 from apps.mail.tasks import simulate_send_emails
 from tests.fixtures.celerycase import CeleryWorkerTestCase
+
+pytestmark = [pytest.mark.unittest]
 
 
 class EmailTaskTestCase(CeleryWorkerTestCase):

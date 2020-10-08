@@ -1,0 +1,36 @@
+"""
+...
+"""
+
+# third-party
+import pytest
+from celery import states
+
+# Django
+from django.core.cache import cache
+
+# local Django
+from apps.mail.tasks import send_email_activation
+
+pytestmark = [pytest.mark.django_db, pytest.mark.celery]
+
+
+def test_simulate_send_emails_task_success(celery_app, celery_worker):
+    """
+    ...
+    """
+
+    username = "usertest"
+    email = "test@gmail.com"
+    domain = "http://localhost:8000"
+    task = send_email_activation.delay(username, email, domain)
+    task_result = task.get()
+    cache_token = cache.get(task_result)
+
+    assert task.status == states.SUCCESS
+    assert not None == cache_token
+
+    tkusername, tkemail, tk = cache_token.split("_")
+    assert tkusername == username
+    assert tkemail == email
+    assert tk == task_result

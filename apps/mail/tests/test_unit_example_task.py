@@ -6,11 +6,14 @@
 # from unittest.mock import patch
 
 # third-party
+import pytest
 from celery import states
 
 # local Django
 from apps.mail.tasks import example_add
 from tests.fixtures.celerycase import CeleryWorkerTestCase
+
+pytestmark = [pytest.mark.unittest]
 
 
 class ExampleTaskTestCase(CeleryWorkerTestCase):
@@ -26,6 +29,7 @@ class ExampleTaskTestCase(CeleryWorkerTestCase):
 
         task = example_add.delay(2, 3)
         task_result = task.get()
+        # print(task_result)
         self.assertEqual(task.status, states.SUCCESS)
         self.assertEqual(task_result, 5)
 

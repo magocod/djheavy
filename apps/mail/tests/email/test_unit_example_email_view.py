@@ -1,5 +1,9 @@
+import pytest
+
 # local Django
 from tests.fixtures.appcase import HttpClientTestCase
+
+pytestmark = [pytest.mark.unittest]
 
 
 class EmailRequestTestCase(HttpClientTestCase):

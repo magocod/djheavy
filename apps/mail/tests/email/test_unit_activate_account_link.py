@@ -3,6 +3,7 @@
 """
 
 # standard library
+import pytest
 import binascii
 import os
 import time
@@ -14,6 +15,8 @@ from django.core.cache import cache
 from tests.fixtures.appcase import HttpClientTestCase
 
 # from django.test import TestCase
+
+pytestmark = [pytest.mark.unittest]
 
 
 class ActivateAccountLinkTestCase(HttpClientTestCase):
