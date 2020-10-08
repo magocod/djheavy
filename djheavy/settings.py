@@ -57,9 +57,7 @@ INSTALLED_APPS = [
     "django_celery_results",
     # local Django
     "apps.dbcache",
-    "apps.mail",
-    "apps.product",
-    "apps.product_type",
+    "apps.mail"
 ]
 
 MIDDLEWARE = [

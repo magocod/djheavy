@@ -40,7 +40,7 @@ class EmailTaskTestCase(CeleryWorkerTestCase):
         try:
             email_payload = None
             task = simulate_send_emails.delay(email_payload)
-            _ = task.get()
+            task.get()
         except Exception as e:
             self.assertEqual(task.status, states.FAILURE)
             self.assertTrue(isinstance(e, IntegrityError))

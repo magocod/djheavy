@@ -18,9 +18,8 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 
 from apps.mail.urls import urlpatterns as mailurls
-from apps.product.urls import urlpatterns as producturls
 
-API_URLS = producturls + mailurls
+API_URLS = mailurls
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="index.html")),
