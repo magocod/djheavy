@@ -33,7 +33,7 @@ pathspec==0.7.0
 pluggy==0.13.1
 prompt-toolkit==3.0.7
 psycopg2==2.8.4
-py==1.9.0
+py==1.10.0
 pycodestyle==2.6.0
 pyflakes==2.2.0
 pyparsing==2.4.7
